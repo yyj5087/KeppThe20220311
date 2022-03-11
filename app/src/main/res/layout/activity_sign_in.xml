@@ -34,12 +34,14 @@
 
     </LinearLayout>
     <TextView
+
         android:text="이메일"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <EditText
         android:hint="이메일 양식"
+        android:id="@+id/edtEmail"
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -49,11 +51,13 @@
         android:layout_height="wrap_content"/>
     <EditText
         android:hint="비밀번호 입력"
+        android:id="@+id/edtPassword"
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
         android:text="로그인"
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
