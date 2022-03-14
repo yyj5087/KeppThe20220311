@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.keppthe20220311.R
+import com.example.keppthe20220311.api.ServerAPI
 import com.example.keppthe20220311.databinding.FragmentMyProfileBinding
 import com.example.keppthe20220311.datas.BasicResponse
 import com.example.keppthe20220311.utils.ContextUtil
@@ -40,6 +41,7 @@ class MyProfile_ListFragment : BaseFragment() {
     }
 
     override fun setValues() {
+
 
 //        내 정보 조회 > UI 반영
         apiList.getRequestMyInfo(ContextUtil.getLoginUserToken(mContext)).enqueue(object :Callback<BasicResponse>{
