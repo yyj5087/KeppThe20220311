@@ -6,8 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.keppthe20220311.R
+import com.example.keppthe20220311.datas.BasicResponse
+import com.example.keppthe20220311.utils.ContextUtil
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class MyProfile_ListFragment : Fragment() {
+class MyProfile_ListFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,7 +24,28 @@ class MyProfile_ListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        setupEvent()
+        setValues()
 
+    }
+
+    override fun setupEvent() {
+
+    }
+
+    override fun setValues() {
+
+//        내 정보 조회 > UI 반영
+        apiList.getRequestMyInfo(ContextUtil.getLoginUserToken(mContext)).enqueue(object :Callback<BasicResponse>{
+            override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
+
+            }
+
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+            }
+
+        })
     }
 
 }
