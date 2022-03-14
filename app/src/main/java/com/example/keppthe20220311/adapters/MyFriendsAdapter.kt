@@ -11,7 +11,7 @@ import com.example.keppthe20220311.R
 class MyFriendsAdapter(
     val mContext: Context,
     resId: Int,
-    val mList: List<UserData>
+    val mList: ArrayList<com.example.keppthe20220311.datas.UserData>
 ) : ArrayAdapter<UserData>(mContext, resId, mList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

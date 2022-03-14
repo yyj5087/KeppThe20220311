@@ -1,6 +1,5 @@
 package com.example.keppthe20220311
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.keppthe20220311.adapters.MyFriendsAdapter
@@ -39,6 +38,7 @@ class ManageMyFriendsActivity : BaseActivity() {
         getMyFriendListFromServer()
 
         mAdapter = MyFriendsAdapter(mContext, R.layout.my_friends_list_item, mFriendList)
+        binding.myFriendsListView.adapter = mAdapter
     }
     fun getMyFriendListFromServer(){
 
@@ -57,6 +57,7 @@ class ManageMyFriendsActivity : BaseActivity() {
                     mFriendList.addAll(br.data.friends)
                     
 //                    어댑터 새로 고침
+                    mAdapter.notifyDataSetChanged()
                     
 
                 }            }
