@@ -47,7 +47,7 @@ class MyProfile_ListFragment : BaseFragment() {
 
                 if(response.isSuccessful){
                     val br = response.body()!!
-  //                  br.data.user.nick_name // 프래그먼트의 txtNickname은 어떻게 가져와야하는가?
+                   binding.txtNickname.text = br.data.user.nick_name // 프래그먼트의 txtNickname은 어떻게 가져와야하는가?
                 }
             }
 
