@@ -29,6 +29,7 @@
             android:layout_height="20dp"
             android:src="@mipmap/ic_launcher"/>
         <TextView
+            android:id="@+id/txtNickname"
             android:text="사용자닉네임"
             android:layout_marginStart="3dp"
             android:textColor="@color/black"
