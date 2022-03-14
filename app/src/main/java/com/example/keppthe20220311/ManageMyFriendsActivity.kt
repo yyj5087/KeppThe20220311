@@ -1,5 +1,6 @@
 package com.example.keppthe20220311
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.keppthe20220311.adapters.MyFriendsAdapter
@@ -31,6 +32,10 @@ class ManageMyFriendsActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        binding.btnAddFriend.setOnClickListener {
+            val myIntent = Intent(mContext, SearchUserActivity::class.java)
+            startActivity(myIntent)
+        }
     }
 
     override fun setValues() {
