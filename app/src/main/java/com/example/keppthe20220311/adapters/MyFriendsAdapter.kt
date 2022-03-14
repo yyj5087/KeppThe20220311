@@ -1,12 +1,16 @@
 package com.example.keppthe20220311.adapters
 
 import android.content.Context
-import android.service.autofill.UserData
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.keppthe20220311.R
+import com.example.keppthe20220311.datas.UserData
 
 class MyFriendsAdapter(
     val mContext: Context,
@@ -21,6 +25,17 @@ class MyFriendsAdapter(
             tempRow = LayoutInflater.from(mContext).inflate(R.layout.activity_manage_my_friends, null)
         }
         val row = tempRow!!
+        val data =  mList[position]
+
+        val imgProfile = row.findViewById<ImageView>(R.id.imgProfile)
+        val txtNickname = row.findViewById<TextView>(R.id.txtNickname)
+        val txtEmail = row.findViewById<TextView>(R.id.txtEmail)
+
+
+        Glide.with(mContext).load(data.profile_img).into(imgProfile)
+        txtNickname.text = data.nick_name
+        txtEmail.text = data.email
+
         return row
     }
 }
