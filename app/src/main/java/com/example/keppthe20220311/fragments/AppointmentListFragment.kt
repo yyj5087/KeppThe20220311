@@ -35,6 +35,6 @@ class AppointmentListFragment : BaseFragment() {
 
     override fun setValues() {
 
-        bin
+
     }
 }

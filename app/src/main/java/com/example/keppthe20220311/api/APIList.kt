@@ -3,6 +3,7 @@ package com.example.keppthe20220311.api
 import com.example.keppthe20220311.datas.BasicResponse
 import org.json.JSONObject
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.http.*
 
 interface APIList {
@@ -34,6 +35,12 @@ interface APIList {
         @Query("type") type: String,
         @Query("value") value: String,
     ) : Call<BasicResponse>
+
+    @GET("/user/friend")
+    fun getRequestFriendList(
+        @Header("X-Http-Token") token: String,
+        @Query("type") type: String // all, my, requested 세문구 외에는 넣지 말자
+    ) : Callback<BasicResponse>
 
 
 }
