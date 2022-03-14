@@ -20,9 +20,16 @@ class SearchedUserRecyclerAdapter(
 
         val imgProfile = view.findViewById<ImageView>(R.id.imgProfile)
         val txtNickname = view.findViewById<TextView>(R.id.txtNickname)
-        val imgSocialLoginLogo = view.findViewById<TextView>(R.id.imgSocialLoginLogo)
+        val imgSocialLoginLogo = view.findViewById<ImageView>(R.id.imgSocialLoginLogo)
         val txtEmail = view.findViewById<TextView>(R.id.txtEmail)
         val btnAddFriend = view.findViewById<Button>(R.id.btnAddFriend)
+
+        fun bind( data: UserData ){
+
+//            실 데이터 반영 기능이 있는 함수
+            txtNickname.text = data.nick_name
+            txtEmail.text = data.email
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -37,6 +44,12 @@ class SearchedUserRecyclerAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
 //        실제 데이터 반영 함수
+
+        val data = mList[position]
+//        이 함수에서 직접 코딩하면 => holder.UI변수로 매번 holder 단어를 써야함.
+//       holder 변수의 멤버변수들을 사용할 수 있는 것 처럼, 함수도 사용할 수 있다.
+
+        holder.bind(data)
 
     }
 //  몇개의 아이템을 보여줄 예정인지? => 데이터목록의 갯수만큼.
