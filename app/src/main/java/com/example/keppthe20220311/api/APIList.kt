@@ -40,7 +40,7 @@ interface APIList {
     fun getRequestFriendList(
         @Header("X-Http-Token") token: String,
         @Query("type") type: String // all, my, requested 세문구 외에는 넣지 말자
-    ) : Callback<BasicResponse>
+    ) : Call<BasicResponse>
 
 
 }
