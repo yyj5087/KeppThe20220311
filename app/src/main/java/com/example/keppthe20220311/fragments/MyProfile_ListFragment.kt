@@ -1,13 +1,17 @@
 package com.example.keppthe20220311.fragments
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.keppthe20220311.R
+import com.example.keppthe20220311.SplashActivity
 import com.example.keppthe20220311.api.ServerAPI
 import com.example.keppthe20220311.databinding.FragmentMyProfileBinding
 import com.example.keppthe20220311.datas.BasicResponse
@@ -38,6 +42,25 @@ class MyProfile_ListFragment : BaseFragment() {
     }
 
     override fun setupEvent() {
+        binding.btnLogout.setOnClickListener {
+            val alert = AlertDialog.Builder(mContext)
+                .setTitle("로그아웃")
+                .setMessage("정말 로그아웃 하시겠습니까?")
+                .setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
+
+//                    실제 로그아웃 처리 => 저장된 토큰을 초기화.
+                    ContextUtil.setLoginUserToken(mContext, "")
+
+//                    로딩화면으로 복귀
+                    val myIntent = Intent(mContext, SplashActivity::class.java)
+                    myIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(myIntent)
+
+                })
+                .setNegativeButton("취소", null)
+                .show()
+
+        }
 
     }
 
@@ -52,7 +75,6 @@ class MyProfile_ListFragment : BaseFragment() {
                     val br = response.body()!!
                    binding.txtNickname.text = br.data.user.nick_name // 프래그먼트의 txtNickname은 어떻게 가져와야하는가?
 
-                    Glide.with(mContext).load(br.data.user.profile_img).into(binding.imgProfile)
                 }
             }
 
