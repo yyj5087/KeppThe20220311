@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.keppthe20220311.ManageMyFriendsActivity
 import com.example.keppthe20220311.R
 import com.example.keppthe20220311.SplashActivity
 import com.example.keppthe20220311.api.ServerAPI
@@ -42,6 +43,14 @@ class MyProfile_ListFragment : BaseFragment() {
     }
 
     override fun setupEvent() {
+
+        binding.btnManageMyFriends.setOnClickListener {
+            val myIntent = Intent(mContext, ManageMyFriendsActivity::class.java)
+            startActivity(myIntent)
+        }
+
+
+
         binding.btnLogout.setOnClickListener {
             val alert = AlertDialog.Builder(mContext)
                 .setTitle("로그아웃")
