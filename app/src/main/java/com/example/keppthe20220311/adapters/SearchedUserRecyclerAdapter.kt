@@ -21,11 +21,14 @@ class SearchedUserRecyclerAdapter(
 
 //        xml을 inflate해와서 => 이를 가지고, MyViewHolder 객체로 생성. 리턴.
 //        재사용성을 알아서 보존해줌
+
         val row = LayoutInflater.from(mContext).inflate(R.layout.searched_users_list_item, parent, false)
         return MyViewHolder(row)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+//        실제 데이터 반영 함수
 
     }
 //  몇개의 아이템을 보여줄 예정인지? => 데이터목록의 갯수만큼.
