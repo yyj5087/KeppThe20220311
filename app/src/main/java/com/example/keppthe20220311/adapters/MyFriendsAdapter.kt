@@ -22,7 +22,7 @@ class MyFriendsAdapter(
 
         var tempRow = convertView
         if (tempRow == null){
-            tempRow = LayoutInflater.from(mContext).inflate(R.layout.activity_manage_my_friends, null)
+            tempRow = LayoutInflater.from(mContext).inflate(R.layout.my_friends_list_item, null)
         }
         val row = tempRow!!
         val data =  mList[position]
