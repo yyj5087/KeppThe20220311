@@ -3,6 +3,7 @@ package com.example.keppthe20220311
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.example.keppthe20220311.adapters.MyFriendsAdapter
 import com.example.keppthe20220311.databinding.ActivityManageMyFriendsBinding
 import com.example.keppthe20220311.datas.BasicResponse
 import com.example.keppthe20220311.datas.UserData
@@ -16,6 +17,8 @@ class ManageMyFriendsActivity : BaseActivity() {
     lateinit var binding: ActivityManageMyFriendsBinding
 
     val mFriendList = ArrayList<UserData>()
+
+    lateinit var mAdapter: MyFriendsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,8 @@ class ManageMyFriendsActivity : BaseActivity() {
     override fun setValues() {
 
         getMyFriendListFromServer()
+
+        mAdapter = MyFriendsAdapter(mContext, R.layout.my_friends_list_item, mFriendList)
     }
     fun getMyFriendListFromServer(){
 
