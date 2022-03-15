@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KeppThe20220311">
         <activity
+            android:name=".EditAppointmentActivity"
+            android:exported="false" />
+        <activity
             android:name=".SearchUserActivity"
             android:exported="false" />
         <activity
