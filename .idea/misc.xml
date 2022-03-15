@@ -16,7 +16,9 @@
         <entry key="..\:/Users/Carl/AndroidStudioProjects/KeppThe20220311/app/src/main/res/layout/activity_sign_in.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/Carl/AndroidStudioProjects/KeppThe20220311/app/src/main/res/layout/activity_sign_up.xml" value="0.15" />
         <entry key="..\:/Users/Carl/AndroidStudioProjects/KeppThe20220311/app/src/main/res/layout/fragment_appointment_list.xml" value="0.15" />
+        <entry key="..\:/Users/Carl/AndroidStudioProjects/KeppThe20220311/app/src/main/res/layout/fragment_my_friends.xml" value="0.1" />
         <entry key="..\:/Users/Carl/AndroidStudioProjects/KeppThe20220311/app/src/main/res/layout/fragment_my_profile.xml" value="0.136" />
+        <entry key="..\:/Users/Carl/AndroidStudioProjects/KeppThe20220311/app/src/main/res/layout/fragment_requested_users.xml" value="0.1" />
         <entry key="..\:/Users/Carl/AndroidStudioProjects/KeppThe20220311/app/src/main/res/layout/my_friends_list_item.xml" value="0.1" />
         <entry key="..\:/Users/Carl/AndroidStudioProjects/KeppThe20220311/app/src/main/res/layout/searched_users_list_item.xml" value="0.1" />
       </map>
