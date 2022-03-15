@@ -13,8 +13,6 @@ import retrofit2.Response
 
 class MainActivity : BaseActivity() {
 
-    lateinit var mAdapter: MainViewPagerAdapter
-
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +27,7 @@ class MainActivity : BaseActivity() {
 
     override fun setValues() {
 
-        mAdapter = MainViewPagerAdapter(supportFragmentManager)
-        binding.mainViewPager.adapter = mAdapter
 
-        binding.mainTabLayout.setupWithViewPager(binding.mainViewPager)
 
     }
 }
