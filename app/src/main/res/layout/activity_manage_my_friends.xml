@@ -8,11 +8,15 @@
         android:orientation="vertical"
         tools:context=".ManageMyFriendsActivity">
 
-        <ListView
-            android:id="@+id/myFriendsListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+       <com.google.android.material.tabs.TabLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/friendsTabLayout"/>
 
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/friendViewPager"/>
         <Button
             android:id="@+id/btnAddFriend"
             android:layout_width="wrap_content"
