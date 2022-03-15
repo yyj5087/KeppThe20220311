@@ -17,7 +17,7 @@ class MyFriendsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_my_friends,false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_my_friends,container,false)
         return binding.root
 
     }

@@ -18,7 +18,7 @@ class RequestedUsersFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_requested_users,false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_requested_users,container,false)
         return binding.root
 
     }
