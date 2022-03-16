@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.keppthe20220311.EditAppointmentActivity
 import com.example.keppthe20220311.R
+import com.example.keppthe20220311.adapters.AppointmentRecyclerAdapter
 import com.example.keppthe20220311.databinding.FragmentAppointmentListBinding
 import com.example.keppthe20220311.datas.AppointmentData
 import com.example.keppthe20220311.datas.BasicResponse
@@ -20,6 +22,7 @@ class AppointmentListFragment : BaseFragment() {
 
     lateinit var binding: FragmentAppointmentListBinding
     val mAppointmentList = ArrayList<AppointmentData>()
+    lateinit var mAppointmentAdapter: AppointmentRecyclerAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,6 +53,10 @@ class AppointmentListFragment : BaseFragment() {
 
 
         getMyAppointmnerListFromServer()
+
+        mAppointmentAdapter = AppointmentRecyclerAdapter(mContext, mAppointmentList)
+        binding.appointmentRecyclerView.adapter = mAppointmentAdapter
+        binding.appointmentRecyclerView.layoutManager = LinearLayoutManager(mContext)
     }
     fun getMyAppointmnerListFromServer(){
 
@@ -59,6 +66,8 @@ class AppointmentListFragment : BaseFragment() {
                     val br = response.body()!!
 
                     mAppointmentList.addAll(br.data.appointments)
+
+                    mAppointmentAdapter.notifyDataSetChanged()
 
                 }
             }
