@@ -11,6 +11,7 @@ import com.example.keppthe20220311.api.ServerAPI
 import com.example.keppthe20220311.databinding.ActivitySignInBinding
 import com.example.keppthe20220311.datas.BasicResponse
 import com.example.keppthe20220311.utils.ContextUtil
+import com.kakao.sdk.user.UserApiClient
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,6 +27,28 @@ class SignInActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        binding.btnKakao.setOnClickListener {
+
+//            카톡 로그인 기능 실행
+
+//            카톡 앱 로그인이 가능한지?
+            if(UserApiClient.instance.isKakaoTalkLoginAvailable(mContext)){
+
+//                카톡 앱이 설치되어있는 상황
+                UserApiClient.instance.loginWithKakaoTalk(mContext){token, error ->
+
+                    Log.d("카카오로그인", "카톡 앱으로 로그인")
+                }
+            }
+            else{
+//                카톡 앱이 없는 상황. 로그인 창 띄워주기
+                UserApiClient.instance.loginWithKakaoAccount(mContext){token, error ->
+
+                    Log.d("카카오로그인", "카톡 앱 없이 로그인")
+                }
+            }
+        }
 
 
         binding.btnSignUP.setOnClickListener {
