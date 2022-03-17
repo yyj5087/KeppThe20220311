@@ -27,10 +27,12 @@ class MyPlacesRecyclerAdapter(
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+        val txtStartPlaceName = view.findViewById<TextView>(R.id.txtStartPlaceName)
 
 
         fun bing(data: PlaceData) {
 
+            txtStartPlaceName.text = data.name
 
         }
 
