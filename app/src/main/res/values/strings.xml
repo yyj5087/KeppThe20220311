@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">KeppThe20220311</string>
+
+
+    <string name="facebook_app_id">1249511158908750</string>
+    <string name="fb_login_protocol_scheme">fb1249511158908750</string>
+    <string name="facebook_client_token">80e3baaf619e349c7378674879a99def</string>
+
+
 </resources>
