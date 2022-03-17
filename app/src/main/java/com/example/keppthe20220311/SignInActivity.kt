@@ -11,14 +11,24 @@ import com.example.keppthe20220311.api.ServerAPI
 import com.example.keppthe20220311.databinding.ActivitySignInBinding
 import com.example.keppthe20220311.datas.BasicResponse
 import com.example.keppthe20220311.utils.ContextUtil
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.kakao.sdk.user.UserApiClient
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class SignInActivity : BaseActivity() {
     lateinit var binding: ActivitySignInBinding
+
+//    페북로그인 화면에 다녀오면, 할일을 관리해주는 변수.
+    lateinit var mCallbackManager : CallbackManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_sign_in)
@@ -27,6 +37,37 @@ class SignInActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+
+        binding.btnFacebook.setOnClickListener {
+
+//            페북 로그인 기능 실행
+
+
+//            1.로그인 하고 다녀오면 어떤 행동을 할지? 인터페이스 설정.
+            LoginManager.getInstance().registerCallback(mCallbackManager, object : FacebookCallback<LoginResult>{
+                override fun onSuccess(result: LoginResult?) {
+
+                }
+
+                override fun onCancel() {
+
+                }
+
+                override fun onError(error: FacebookException?) {
+
+                }
+
+            })
+
+//            2. 실제로 페북 로그인 실행
+
+//            공개 프로필 / 이메일 주소를 받아와달라.
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
+
+
+        }
+
 
         binding.btnKakao.setOnClickListener {
 
@@ -109,6 +150,14 @@ class SignInActivity : BaseActivity() {
 
     override fun setValues() {
 
+//        페북로그인 - 콜백 관리 기능 초기화
+        mCallbackManager = CallbackManager.Factory.create()
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        mCallbackManager.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
     }
 //    카카오 서버에서, 로그인된 계정의 정보 불러오기
     fun getKakaoUserInfo(){
