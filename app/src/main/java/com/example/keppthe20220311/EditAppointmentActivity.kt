@@ -75,8 +75,12 @@ class EditAppointmentActivity : BaseActivity() {
 
                     mSelectedStartPlace = mStarPlaceList[position]
 
-//                선택한 출발지 ~ 지도에서 클릭한 도착지까지의 이동 경로 / 교통 정보 표현.
+                // 네이버 지도 보다 로딩이 느릴 수 있다.
+//                    출발 장소도 로딩이 끝나면, 다시 지도 세팅 진행
+                    setNaverMap()
 
+//                선택한 출발지 ~ 지도에서 클릭한 도착지까지의 이동 경로 / 교통 정보 표현.
+                    findWay()
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -280,6 +284,10 @@ class EditAppointmentActivity : BaseActivity() {
             return //  우선 함수 강제 종료.
         }
 
+//        네이버 맵도 불러와져야 세팅 진행
+        if(naverMap == null){
+            return // 이 상황도 함수 강제 종료.
+        }
 
 //           지도 시작지점 : 선택된 출발 지점.
 
@@ -346,6 +354,12 @@ class EditAppointmentActivity : BaseActivity() {
 
 //    길찾기 관련 코드를 별도 함수로. => 여러곳에서 활용 가능.
     fun findWay(){
+
+//    출발지  / 도착지 모두 불러와져야 길찾기 진행
+
+    if(mSelectedStartPlace == null || mSelectedLatLng == null){
+        return // 좌표가 하나라도 없으면 강제 종료
+    }
 
         val myODsayService =
             ODsayService.init(mContext, "huoblO28sQW3DqSI1pNoJceF/YteXjSoM4yd8/zRotc")
