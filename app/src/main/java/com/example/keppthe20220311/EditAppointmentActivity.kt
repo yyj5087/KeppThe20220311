@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.keppthe20220311.databinding.ActivityEditAppointmentBinding
 import com.example.keppthe20220311.datas.BasicResponse
+import com.example.keppthe20220311.datas.PlaceData
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.overlay.InfoWindow
@@ -37,6 +38,9 @@ class EditAppointmentActivity : BaseActivity() {
     var marker : Marker? = null //지도에 표시될 하나의 마커. 처음에는 찍지 않는 상태
     var path: PathOverlay? = null // 출발지 ~ 도착지까지 보여줄 경로 선. 처음에는 보이지 않는 상태
     var mSelectedLatLng : LatLng? = null // 약속 장소 위/경도도 처음에는 설정하지 않은 상태.
+
+//    내 출발 장소 목록
+    val mStarPlaceList = ArrayList<PlaceData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -368,5 +372,31 @@ class EditAppointmentActivity : BaseActivity() {
 
             }
         }
+
+//        내 출발장소 목록 불러오기
+        getMyStartPlaceListFromServer()
+
+    }
+    fun getMyStartPlaceListFromServer(){
+
+        apiList.getRequestMyPlaceList().enqueue(object : Callback<BasicResponse>{
+            override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
+
+                if(response.isSuccessful){
+
+                    val br = response.body()!!
+
+                    mStarPlaceList.clear()
+
+                    mStarPlaceList.addAll(br.data.places)
+
+                }
+            }
+
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+            }
+
+        })
     }
 }
