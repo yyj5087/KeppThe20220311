@@ -9,6 +9,7 @@ import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.example.keppthe20220311.adapters.StartPlaceSpinnerAdapter
 import com.example.keppthe20220311.databinding.ActivityEditAppointmentBinding
 import com.example.keppthe20220311.datas.BasicResponse
 import com.example.keppthe20220311.datas.PlaceData
@@ -41,6 +42,7 @@ class EditAppointmentActivity : BaseActivity() {
 
 //    내 출발 장소 목록
     val mStarPlaceList = ArrayList<PlaceData>()
+    lateinit var mStartPlaceAdapter: StartPlaceSpinnerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -376,6 +378,11 @@ class EditAppointmentActivity : BaseActivity() {
 //        내 출발장소 목록 불러오기
         getMyStartPlaceListFromServer()
 
+//        스피너 어댑터 연결 => 리스트뷰와 동일함
+
+        mStartPlaceAdapter = StartPlaceSpinnerAdapter(mContext, R.layout.start_place_spinner_list_item, mStarPlaceList)
+        binding.startPlaceSpinner.adapter = mStartPlaceAdapter
+
     }
     fun getMyStartPlaceListFromServer(){
 
@@ -389,6 +396,8 @@ class EditAppointmentActivity : BaseActivity() {
                     mStarPlaceList.clear()
 
                     mStarPlaceList.addAll(br.data.places)
+
+                    mStartPlaceAdapter.notifyDataSetChanged()
 
                 }
             }
