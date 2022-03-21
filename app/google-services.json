@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "583100159816",
+    "project_id": "keppthe20220311",
+    "storage_bucket": "keppthe20220311.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583100159816:android:1cc1822cf42a1c865a857d",
+        "android_client_info": {
+          "package_name": "com.example.keppthe20220311"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583100159816-tj7ka6avjnjfhfm14fcn4erk3odbano4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2LD8z0HIjqbFgUo0J4efuWk_9u5DVR3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583100159816-tj7ka6avjnjfhfm14fcn4erk3odbano4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
